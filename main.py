@@ -37,6 +37,10 @@ def main():
             
         updatables.update(dt)
         for asteroid in asteroids:
+            for bullet in bullets:
+                if asteroid.circle_collision(bullet):
+                    pygame.sprite.Sprite.kill(asteroid)
+                    pygame.sprite.Sprite.kill(bullet)
             if asteroid.circle_collision(player):
                 sys.exit("Game Over!")
         screen.fill("#000000")
